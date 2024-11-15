@@ -1,0 +1,87 @@
+<form [formGroup]="cvForm" (ngSubmit)="onSubmit()" class="container mt-4">
+    <div class="mb-3">
+      <!-- Name Field -->
+      <label for="name" class="form-label">Name:</label>
+      <input id="name" formControlName="name" type="text" class="form-control" />
+      <div *ngIf="cvForm.controls['name'].invalid && cvForm.controls['name'].touched" class="text-danger">
+        Name is required.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <!-- Full Name Field -->
+      <label for="fullName" class="form-label">Full Name:</label>
+      <input id="fullName" formControlName="fullName" type="text" class="form-control" />
+      <div *ngIf="cvForm.controls['fullName'].invalid && cvForm.controls['fullName'].touched" class="text-danger">
+        Full name is required.
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <!-- Email Field -->
+      <label for="email" class="form-label">Email:</label>
+      <input id="email" formControlName="email" type="email" class="form-control" />
+      <div *ngIf="cvForm.controls['email'].invalid && cvForm.controls['email'].touched" class="text-danger">
+        <div *ngIf="cvForm.controls['email'].hasError('required')">Email is required.</div>
+        <div *ngIf="cvForm.controls['email'].hasError('email')">Please enter a valid email address.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <!-- Mobile Number Field -->
+      <label for="mobileNumber" class="form-label">Mobile Number:</label>
+      <input id="mobileNumber" formControlName="mobileNumber" type="text" class="form-control" />
+      <div *ngIf="cvForm.controls['mobileNumber'].invalid && cvForm.controls['mobileNumber'].touched" class="text-danger">
+        <div *ngIf="cvForm.controls['mobileNumber'].hasError('required')">Mobile number is required.</div>
+        <div *ngIf="cvForm.controls['mobileNumber'].hasError('pattern')">Mobile number must contain only numbers.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <!-- City Field -->
+      <label for="cityName" class="form-label">City:</label>
+      <input id="cityName" formControlName="cityName" type="text" class="form-control" />
+    </div>
+  
+    <div class="mb-3">
+      <!-- Company Name Field -->
+      <label for="companyName" class="form-label">Company Name:</label>
+      <input id="companyName" formControlName="companyName" type="text" class="form-control" />
+      <div *ngIf="cvForm.controls['companyName'].invalid && cvForm.controls['companyName'].touched" class="text-danger">
+        <div *ngIf="cvForm.controls['companyName'].hasError('required')">Company name is required.</div>
+        <div *ngIf="cvForm.controls['companyName'].hasError('maxlength')">Company name cannot exceed 20 characters.</div>
+      </div>
+    </div>
+  
+    <div class="mb-3">
+      <!-- Company City Field -->
+      <label for="City" class="form-label">Company City:</label>
+      <input id="City" formControlName="City" type="text" class="form-control" />
+    </div>
+  
+    <div class="mb-3">
+      <!-- Company Field -->
+      <label for="companyField" class="form-label">Company Field:</label>
+      <input id="companyField" formControlName="companyField" type="text" class="form-control" />
+    </div>
+  
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="cvForm.invalid">Submit</button>
+  </form>
+  
+  <!-- Form Errors -->
+  <div *ngIf="cvForm.invalid && cvForm.touched" class="text-danger mt-3">
+    <div *ngIf="cvForm.controls['name'].invalid && cvForm.controls['name'].touched">
+      Name is required.
+    </div>
+    <div *ngIf="cvForm.controls['email'].invalid && cvForm.controls['email'].touched">
+      A valid email is required.
+    </div>
+    <div *ngIf="cvForm.controls['mobileNumber'].invalid && cvForm.controls['mobileNumber'].touched">
+      Mobile number is required and must contain only numbers.
+    </div>
+    <div *ngIf="cvForm.controls['companyName'].invalid && cvForm.controls['companyName'].touched">
+      Company name is required and must be less than 20 characters.
+    </div>
+  </div>
+  
